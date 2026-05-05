@@ -1,0 +1,90 @@
+:root {
+    --bg: #FFDE00; /* Kuning Terang */
+    --main: #FFFFFF;
+    --accent: #000000;
+    --border-size: 4px;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    color: var(--accent);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    border: var(--border-size) solid var(--accent);
+    background: var(--main);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 0px var(--accent);
+}
+
+.badge {
+    background: #ff4757;
+    color: white;
+    padding: 2px 10px;
+    font-size: 0.5em;
+    vertical-align: middle;
+}
+
+.card {
+    background: var(--main);
+    border: var(--border-size) solid var(--accent);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 8px 8px 0px var(--accent);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"], input[type="file"] {
+    flex-grow: 1;
+    padding: 15px;
+    border: var(--border-size) solid var(--accent);
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+}
+
+button {
+    padding: 15px 25px;
+    background: #2ed573;
+    border: var(--border-size) solid var(--accent);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--accent);
+    transition: 0.1s;
+}
+
+button:active {
+    box-shadow: 0px 0px 0px var(--accent);
+    transform: translate(4px, 4px);
+}
+
+.btn-alt {
+    background: #1e90ff;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.result-area {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed var(--accent);
+    background: #f1f2f6;
+    min-height: 50px;
+    word-break: break-all;
+}
+
+.success { color: #2f3542; border-left: 10px solid #2ed573; padding-left: 10px; }
+.error { color: #ff4757; border-left: 10px solid #ff4757; padding-left: 10px; }
