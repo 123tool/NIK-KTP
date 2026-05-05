@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIK KTP OSINT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NIK KTP OSINT <span class="badge">PRO</span></h1>
+            <p>OSINT & Validation Tools -Anonym</p>
+        </header>
+
+        <section class="card">
+            <h3>🔍 Validasi & Cari</h3>
+            <div class="input-group">
+                <input type="text" id="nikInput" placeholder="Masukkan NIK atau Nama...">
+                <button onclick="processNIK()">EKSEKUSI</button>
+            </div>
+            <div id="result" class="result-area">Menunggu input...</div>
+        </section>
+
+        <section class="card">
+            <h3>📁 Batch Processing</h3>
+            <input type="file" id="fileInput">
+            <button class="btn-alt" onclick="uploadFile()">PROSES FILE</button>
+        </section>
+    </div>
+
+    <script>
+        async function processNIK() {
+            const val = document.getElementById('nikInput').value;
+            const resDiv = document.getElementById('result');
+            
+            // Validasi NIK dulu
+            const response = await fetch('/api/validate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ nik: val })
+            });
+            const result = await response.json();
+
+            if(result.valid) {
+                resDiv.innerHTML = `
+                    <div class="success">
+                        <b>HASIL EKSTRAKSI:</b><br>
+                        Gender: ${result.data.gender}<br>
+                        Tgl Lahir: ${result.data.lahir}<br>
+                        Kode Wilayah: ${result.data.provinsi}.${result.data.kabupaten}.${result.data.kecamatan}
+                    </div>`;
+            } else {
+                resDiv.innerHTML = `<div class="error">${result.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
